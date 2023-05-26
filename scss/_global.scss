@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.btn {
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 20px 40px;
+    border: 1px solid #fff;
+    border-radius: 16px;
+}
+
+h1 {
+    line-height: 0;
+}
+
+h2,
+h3,
+h4 {
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 80px;
+
+    @media (max-width:375px) {
+        font-size: 48px;
+    }
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.logo {
+    max-width: 250px;
+}
