@@ -4,45 +4,77 @@
     box-sizing: border-box;
 }
 
+body{
+    background: #020202;
+    color: #fff;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.wrap {
+    display: flex;
+    flex-direction: column;
+
+}
+.header, .container, .footer{
+    width: 100%;
+    max-width: 1320px;
+    padding: 0 12px;
+    margin: 0 auto;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
 .btn {
     font-size: 20px;
+    font-weight: 900;
     line-height: 1.2;
+    background: #020202;
+    color: #fff;
     padding: 20px 40px;
     border: 1px solid #fff;
     border-radius: 16px;
+    &:hover{
+        background: #fff;
+        color: #020202;
+    }
+}
+.material-icons{
+    vertical-align: middle;
 }
 
 h1 {
     line-height: 0;
 }
 
-h2,
-h3,
-h4 {
+h2, h3, h4, .h2, .h3, .h4{
     font-weight: 900;
     line-height: 1.2;
 }
 
-h2 {
+h2, .h2{
     font-size: 80px;
 
-    @media (max-width:375px) {
+    @media (max-width:767px) {
         font-size: 48px;
     }
 }
 
-h3 {
+h3, .h3{
     font-size: 32px;
 }
 
-h4 {
+h4, .h4{
     font-size: 20px;
 }
 
 .img {
     display: block;
     max-width: 100%;
-    max-height: 100%;
+    height: auto;
 }
 
 a {
@@ -52,5 +84,23 @@ a {
 }
 
 .logo {
-    max-width: 250px;
+    height: 40px;
+    width: 250px;
+    background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/logo.png?raw=true);
+    background-size: cover;
+    // 將內部文字隱藏
+    text-indent: 101%;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+.mb{
+    margin-bottom: 160px;
+    @media (max-width:767px) {
+        margin-bottom: 120px;
+    }
+}
+
+.d-none {
+    display: none;
 }
