@@ -22,13 +22,39 @@ function checkWindowSize() {
 }
 */
 
+/* 企業圖片動畫滑動效果 */
+// function scrollRight() {
+//   /*先向右移动一个图片的宽度 移动后把最后一个元素插入到头部 然后移除最后一个元素*/
+//   $('.enterprise-line-1').animate({
+//   }, 0, function() {
+//     $('.enterprise-line-1').prepend($('.enterprise-line-1 li:last').clone());
+//     $('.enterprise-line-1 li:last').remove();
+//   });
+
+//   /*完成上面动作后将left置为0*/
+//   $('.enterprise-line-l').animate({
+//     left: 0
+//   }, 200);
+// }
+// scrollRight();
+
+// var auto;
+// $('#auto').click(function() {
+//   auto = setInterval(scrollLeft, 2000);
+// });
+
+// $('#stop').click(function() {
+//   clearInterval(auto);
+// });
+
 
 $(document).ready(function (event) {
 
- $('.navbar-icon-mobile').click(function () {
+  $('.navbar-icon-mobile').click(function () {
     $('.navbar-menu-icon-mobile').toggle();
     $('.navbar-close-icon-mobile').toggle();
     $('.navbar-menu-mobile').slideToggle();
+    $('.banner, main').slideToggle();
   });
 
   $('.category-click').click(function () {
@@ -45,8 +71,8 @@ $(document).ready(function (event) {
     $('.sort-text').text('由舊到新');
   });
 
-  $('.QnA-list').click(function (e) {
-    e.preventDefault();
+  $('.QnA-list').click(function (event) {
+    event.preventDefault();
     $(this).toggleClass('QnA-list-active');
     $(this).find('.icon-add').toggleClass('d-none');
     $(this).find('.icon-remove').toggle();
@@ -54,7 +80,51 @@ $(document).ready(function (event) {
   })
 });
 
-const swiper = new Swiper('.swiper', {
+/* 原本要利用 swiper 實現自動滾動, codepen 測試沒問題, 但放入專案縮放視窗時圖片會重疊*/
+// 已解決 ↑↑↑ 將_home.scss Line348 設置最大最小寬度
+// https://codepen.io/laron9486/pen/PoyXaqV
+const swiper = new Swiper(".enterprise-swiper", {
+  // on: {
+  //   resize: function () {
+  //     this.update();
+  //   },
+  // },
+  slidesPerView: 6,
+  slidesPerGroup: 1,
+  spaceBetween: 20,
+  speed: 2500,
+  loop: true,  // 此模式下直接拖拉視窗不會自動輪播
+  // 物件元素要比 slidesPerView 的值大於兩倍, loop 才會啟動
+  // ［Swiper.js loop when slidesPerView is bigger than half of the amount of Slides］
+  // https://reurl.cc/o7eVbQ
+  autoplay: {
+    delay: 500,
+  },
+  breakpoints: {
+    // 768: {
+    //   slidesPerView: 5,
+    // },
+    // 993: {
+    //   slidesPerView: 6,
+    // },
+    1201: {
+      slidesPerView: 7,
+      slidesPerGroup: 0
+    },
+  },
+});
+
+/* --------------- 拖曳類型列表 --------------- 測試未果(放置)
+let areaDrag = document.querySelector('.category-menu');
+
+// 添加滑鼠滾動事件監聽器
+areaDrag.addEventListener("wheel", function (event) {
+  event.preventDefault();
+  areaDrag.scrollLeft += event.deltaY;
+});
+*/
+
+const commentSwipper = new Swiper('#comment-swiper', {
 
   // 頁面呈現的物件數
   slidesPerView: 1,
@@ -62,9 +132,10 @@ const swiper = new Swiper('.swiper', {
   slidesPerGroup: 1,
   // 物件之間的間距,單位px,其他單位用字串呈現
   spaceBetween: 0,
+  loop: true,         // 此模式下視窗改變尺寸需重整才會自動播放
   // 自動輪播,單位毫秒
   autoplay: {
-    delay: 2000,
+    delay: 2500,
   },
   // 斷點
   breakpoints: {
@@ -72,11 +143,13 @@ const swiper = new Swiper('.swiper', {
       slidesPerView: 2,
       slidesPerGroup: 1,
       spaceBetween: 24,
+      loop: false,
     },
     992: {
       slidesPerView: 3,
       slidesPerGroup: 0,
       spaceBetween: 24,
+      loop: false,
     },
   },
   // 分頁   
@@ -116,12 +189,9 @@ let pagesData = {};     // Line165
 
 // 若 API 文件內的 request／Query String 的 request 是 false 則 ? 問號後的路徑可以不寫
 function getData({ type, sort, page, search }) {
-  const apiUrl = `${apiPath}/api/v1/works?
-  sort=${sort}&
-  page=${page}&
-  ${type ? `type=${type}&` : ""}
-  ${search ? `search=${search}` : ""}
-  `;
+  const apiUrl = `${apiPath}/api/v1/works?sort=${sort}&page=${page}&${
+    type ? `type=${type}&` : ""
+  }${search ? `search=${search}` : ""}`;
 
   // axios 取第三方資料
   axios.get(apiUrl).then(function (response) {
@@ -144,14 +214,13 @@ getData(data);  // Line97
 function WorksRender() {
   let works = "";
 
-  worksData.forEach(function (item) {
-    works += /*html*/
-      `<li class="product-card">
+  worksData.forEach((item) => {
+    works += /*html*/ `<li class="product-card">
         <div class="product-card-pic">
           <img class="img" src="${item.imageUrl}" alt="ai image">
         </div>
         <div class="product-subject">
-          <h4 class="h4">${item.title}</h4>
+          <h4 class="product-subject-title">${item.title}</h4>
           <p class="product-subject-describe">${item.description}</p>
         </div>
         <div class="product-belong">
@@ -172,10 +241,10 @@ function WorksRender() {
 
 // 分頁切換
 function changePage(pagesData) {
-  const pageLinks = document.querySelectorAll("a.page-link");
+  const pageLinks = document.querySelectorAll("a.pagination-item-link");
   let pageId = "";
 
-  pageLinks.forEach(function (item) {
+  pageLinks.forEach((item) => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
       pageId = e.target.dataset.page;
@@ -190,26 +259,27 @@ function changePage(pagesData) {
   });
 }
 
-/* --------------- 先撈老師的範例,之後要回頭看 Code --------------- */
+/* --------------- 先撈範例,之後要回頭看 Code --------------- */
 // 渲染分頁
 function PagesRender() {
   let pageStr = "";
 
   for (let i = 1; i <= pagesData.total_pages; i += 1) {
-    pageStr += /*html*/
-      `<li class="page-item ${pagesData.current_page == i ? "active" : ""}" >
-      <a class="
-      page-link ${pagesData.current_page == i ? "disabled" : ""}"
-      href="#"  
-      data-page="${i}">${i}</a>
+    pageStr += /*html*/ `<li class="pagination-item ${
+      pagesData.current_page == i ? "active" : ""
+    }" >
+      <a class="pagination-item-link ${
+        pagesData.current_page == i ? "disabled" : ""
+      }" href="#"  data-page="${i}">${i}</a>
     </li>`;
   }
 
   if (pagesData.has_next) {
-    pageStr += /*html*/
-      `<li class="page-item">
-      <a class="page-link" href="#">
-        <span class="material-icons">keyboard_arrow_right</span>
+    pageStr += /*html*/ `<li class="pagination-item">
+      <a class="pagination-item-link" href="#">
+        <span class="material-icons">
+          keyboard_arrow_right
+        </span>
       </a>
     </li>`;
   }

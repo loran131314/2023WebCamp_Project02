@@ -60,6 +60,17 @@ table {
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  height: 4px;
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+*::-webkit-scrollbar-thumb {
+  background: #f2f2f2;
+}
+
 body {
   background: #020202;
   color: #fff;
@@ -69,21 +80,14 @@ body {
   line-height: 1.5;
 }
 
-.wrap {
-  display: flex;
-  flex-direction: column;
-}
-
-.header, .container, .footer {
+.header,
+.banner,
+.container,
+.footer {
   width: 100%;
   max-width: 1320px;
   padding: 0 12px;
   margin: 0 auto;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
 }
 
 .btn {
@@ -109,25 +113,38 @@ h1 {
   line-height: 0;
 }
 
-h2, h3, h4, .h2, .h3, .h4 {
+h2,
+h3,
+h4,
+.application-title,
+.direction li,
+.service-title,
+.service-card-title,
+.enterprise-title {
   font-weight: 900;
   line-height: 1.2;
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: 80px;
 }
 @media (max-width: 767px) {
-  h2, .h2 {
+  h2,
+  .h2 {
     font-size: 48px;
   }
 }
 
-h3, .h3 {
+h3,
+.service-title,
+.service-card-title,
+.enterprise-title {
   font-size: 32px;
 }
 
-h4, .h4 {
+h4,
+.product-subject-title {
   font-size: 20px;
 }
 
@@ -141,6 +158,12 @@ a {
   text-decoration: none;
   color: #fff;
   display: inline-block;
+}
+
+a,
+button,
+.btn {
+  cursor: pointer;
 }
 
 .logo {
@@ -168,11 +191,6 @@ a {
 
 /* 首頁 */
 /* --------------- wrap > header --------------- */
-.header {
-  display: flex;
-  flex-direction: column;
-}
-
 .navbar {
   padding: 10px 0;
   margin-bottom: 40px;
@@ -228,12 +246,11 @@ a {
     right: 0;
     top: 81px;
     z-index: 1;
-    padding: 188px 0;
+    padding: 155px 0;
     background: #020202;
     font-size: 80px;
     text-align: center;
     line-height: 1.2;
-    border-bottom: 1px solid #fff;
   }
   .navbar-menu-mobile a {
     padding: 0 12px;
@@ -246,9 +263,7 @@ a {
   }
 }
 
-.banner {
-  max-width: 100%;
-}
+/* --------------- container > banner --------------- */
 .banner .slogan {
   font-size: 120px;
   line-height: 1.2;
@@ -266,15 +281,9 @@ a {
   overflow: hidden;
 }
 .banner .grass-animate .grass1 {
-  animation: slide-up1 4s linear infinite;
+  animation: slide-up-1 4s linear infinite;
 }
-.banner .grass-animate .grass2 {
-  animation: slide-up2 4s linear infinite;
-}
-.banner .grass-animate .grass3 {
-  animation: slide-up3 4s linear infinite;
-}
-@keyframes slide-up1 {
+@keyframes slide-up-1 {
   40% {
     transform: translateY(0px);
     opacity: 1;
@@ -300,7 +309,10 @@ a {
     opacity: 1;
   }
 }
-@keyframes slide-up2 {
+.banner .grass-animate .grass2 {
+  animation: slide-up-2 4s linear infinite;
+}
+@keyframes slide-up-2 {
   30% {
     transform: translateY(0px);
     opacity: 1;
@@ -326,7 +338,10 @@ a {
     opacity: 1;
   }
 }
-@keyframes slide-up3 {
+.banner .grass-animate .grass3 {
+  animation: slide-up-3 4s linear infinite;
+}
+@keyframes slide-up-3 {
   20% {
     transform: translateY(0px);
     opacity: 1;
@@ -394,9 +409,9 @@ a {
   margin-top: 12px;
   border: 1px solid #525252;
   border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+}
+.service-card .material-icons, .service-card-title {
+  margin-bottom: 20px;
 }
 .service .material-icons {
   font-size: 80px;
@@ -438,36 +453,43 @@ a {
   margin-bottom: 80px;
 }
 .enterprise-group {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.enterprise-line {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  overflow-x: hidden;
   position: relative;
 }
-.enterprise-line::before {
+.enterprise-group::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100px;
   background-image: linear-gradient(to right, #000, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, #000);
+  z-index: 2;
 }
+.enterprise-group .swiper {
+  padding-left: 80px;
+}
+.enterprise-group .swiper:last-child {
+  padding-left: 0px;
+}
+.enterprise-line {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+.enterprise-line:last-child {
+  justify-content: flex-end;
+  margin-bottom: 0;
+}
+.enterprise-line li,
 .enterprise-line .img {
   max-width: initial;
-  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
   height: 40px;
 }
 @media (max-width: 767px) {
   .enterprise-title {
     font-size: 20px;
     margin-bottom: 24px;
-  }
-  .enterprise .enterprise-group {
-    gap: 12px;
   }
 }
 
@@ -545,7 +567,7 @@ a {
   color: #020202;
   border-radius: 160px;
 }
-.application .h2 {
+.application-title {
   margin-bottom: 80px;
   text-align: center;
 }
@@ -555,7 +577,7 @@ a {
     padding: 80px 0;
     border-radius: 20px;
   }
-  .application .h2 {
+  .application-title {
     font-size: 32px;
     padding: 0 30px;
     margin-bottom: 32px;
@@ -657,12 +679,11 @@ a {
     max-width: 100%;
     margin-bottom: 42px;
     flex-wrap: wrap;
-    gap: 0;
   }
   .category ul {
     margin: 16px auto 0;
     order: 2;
-    overflow: hidden;
+    overflow-x: scroll;
   }
 }
 
@@ -704,7 +725,7 @@ a {
 .product-subject {
   flex-grow: 1;
 }
-.product-subject .h4 {
+.product-subject-title {
   margin-bottom: 12px;
 }
 .product-subject-describe {
@@ -751,29 +772,32 @@ a {
   display: flex;
   justify-content: flex-end;
   gap: 4px;
+  margin-right: 12px;
   /* LV2 設計稿
       .material-icons {
           padding: 12px;
       }
   */
 }
-.pagination a {
-  color: #fff;
+.pagination-item-link {
+  max-width: 48px;
   padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #020202;
+  cursor: pointer;
 }
-.pagination .active,
-.pagination a:focus,
-.pagination a:hover {
+.pagination-item-link:hover {
   background: #020202;
   color: #fff;
   border-radius: 16px;
 }
-@media (max-width: 767px) {
-  .pagination {
-    justify-content: center;
-  }
+.pagination .disabled {
+  background: #020202;
+  color: #fff;
+  border-radius: 16px;
 }
-
 .start {
   text-align: center;
   margin-bottom: 160px;
@@ -806,12 +830,16 @@ a {
   padding: 80px 0;
   border-top: 1px solid #fff;
 }
-.content .direction {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.content .direction li {
+  margin-bottom: 8px;
 }
-.content .direction a:hover {
+.content .direction li:last-child {
+  margin-bottom: 0;
+}
+.content .direction li a {
+  font-size: 80px;
+}
+.content .direction li a:hover {
   background: #fff;
   color: #020202;
   border-radius: 5px;
@@ -819,6 +847,9 @@ a {
 @media (max-width: 767px) {
   .content {
     flex-direction: column-reverse;
+  }
+  .content a {
+    font-size: 48px;
   }
   .content .logo {
     margin-bottom: 40px;
@@ -861,12 +892,10 @@ a {
   }
   .information .copyright,
   .information .link {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin: 6px 0;
   }
   .information .link {
-    order: 2;
-    margin-right: 0;
+    order: 1;
   }
 }
 

@@ -4,7 +4,20 @@
     box-sizing: border-box;
 }
 
-body{
+// 滾動條
+*::-webkit-scrollbar {
+    // display: none;
+    height: 4px;
+    border-radius: 10px;
+    &-track{
+        background: #fff;
+    }
+    &-thumb{
+        background: #f2f2f2;
+    }
+}
+
+body {
     background: #020202;
     color: #fff;
     font-family: 'Noto Sans TC', sans-serif;
@@ -12,20 +25,15 @@ body{
     font-weight: 700;
     line-height: 1.5;
 }
-.wrap {
-    display: flex;
-    flex-direction: column;
 
-}
-.header, .container, .footer{
+.header,
+.banner,
+.container,
+.footer {
     width: 100%;
     max-width: 1320px;
     padding: 0 12px;
     margin: 0 auto;
-}
-.container{
-    display: flex;
-    flex-direction: column;
 }
 
 .btn {
@@ -37,12 +45,14 @@ body{
     padding: 20px 40px;
     border: 1px solid #fff;
     border-radius: 16px;
-    &:hover{
+
+    &:hover {
         background: #fff;
         color: #020202;
     }
 }
-.material-icons{
+
+.material-icons {
     vertical-align: middle;
 }
 
@@ -50,12 +60,20 @@ h1 {
     line-height: 0;
 }
 
-h2, h3, h4, .h2, .h3, .h4{
+h2,
+h3,
+h4,
+.application-title,
+.direction li,
+.service-title,
+.service-card-title,
+.enterprise-title {
     font-weight: 900;
     line-height: 1.2;
 }
 
-h2, .h2{
+h2,
+.h2 {
     font-size: 80px;
 
     @media (max-width:767px) {
@@ -63,11 +81,15 @@ h2, .h2{
     }
 }
 
-h3, .h3{
+h3,
+.service-title,
+.service-card-title,
+.enterprise-title {
     font-size: 32px;
 }
 
-h4, .h4{
+h4,
+.product-subject-title {
     font-size: 20px;
 }
 
@@ -83,6 +105,12 @@ a {
     display: inline-block;
 }
 
+a,
+button,
+.btn {
+    cursor: pointer;
+}
+
 .logo {
     height: 40px;
     width: 250px;
@@ -90,12 +118,13 @@ a {
     background-size: cover;
     // 將內部文字隱藏
     text-indent: 101%;
-    overflow:hidden;
+    overflow: hidden;
     white-space: nowrap;
 }
 
-.mb{
+.mb {
     margin-bottom: 160px;
+
     @media (max-width:767px) {
         margin-bottom: 120px;
     }

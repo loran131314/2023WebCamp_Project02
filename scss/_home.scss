@@ -1,9 +1,4 @@
 /* --------------- wrap > header --------------- */
-.header {
-    display: flex;
-    flex-direction: column;
-}
-
 .navbar {
     padding: 10px 0;
     margin-bottom: 40px;
@@ -43,15 +38,18 @@
         &-menu-icon-mobile {
             display: inline;
             padding: 4px;
-            &:hover{
+
+            &:hover {
                 background: #fff;
                 color: #020202;
                 border-radius: 5px;
             }
         }
-        &-close-icon-mobile{
+
+        &-close-icon-mobile {
             padding: 4px;
-            &:hover{
+
+            &:hover {
                 background: #fff;
                 color: #020202;
                 border-radius: 5px;
@@ -64,16 +62,17 @@
             right: 0;
             top: 81px;
             z-index: 1;
-            padding: 188px 0;
+            padding: 155px 0;
             background: #020202;
             font-size: 80px;
             text-align: center;
             line-height: 1.2;
-            border-bottom: 1px solid #fff;
-            a{
+
+            a {
                 padding: 0 12px;
                 margin: 4px 0;
-                &:hover{
+
+                &:hover {
                     background: #fff;
                     color: #020202;
                     border-radius: 10px;
@@ -83,9 +82,8 @@
     }
 }
 
+/* --------------- container > banner --------------- */
 .banner {
-    max-width: 100%;
-
     .slogan {
         font-size: 120px;
         line-height: 1.2;
@@ -105,18 +103,10 @@
         overflow: hidden;
 
         .grass1 {
-            animation: slide-up1 4s linear infinite;
+            animation: slide-up-1 4s linear infinite;
         }
 
-        .grass2 {
-            animation: slide-up2 4s linear infinite;
-        }
-
-        .grass3 {
-            animation: slide-up3 4s linear infinite;
-        }
-
-        @keyframes slide-up1 {
+        @keyframes slide-up-1 {
             40% {
                 transform: translateY(0px);
                 opacity: 1;
@@ -148,7 +138,11 @@
             }
         }
 
-        @keyframes slide-up2 {
+        .grass2 {
+            animation: slide-up-2 4s linear infinite;
+        }
+
+        @keyframes slide-up-2 {
             30% {
                 transform: translateY(0px);
                 opacity: 1;
@@ -180,7 +174,11 @@
             }
         }
 
-        @keyframes slide-up3 {
+        .grass3 {
+            animation: slide-up-3 4s linear infinite;
+        }
+
+        @keyframes slide-up-3 {
             20% {
                 transform: translateY(0px);
                 opacity: 1;
@@ -261,9 +259,11 @@
         margin-top: 12px;
         border: 1px solid #525252;
         border-radius: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+
+        .material-icons,
+        &-title {
+            margin-bottom: 20px;
+        }
     }
 
     .material-icons {
@@ -316,16 +316,7 @@
     }
 
     &-group {
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    &-line {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
+        overflow-x: hidden;
         position: relative;
 
         &::before {
@@ -334,11 +325,33 @@
             width: 100%;
             height: 100px;
             background-image: linear-gradient(to right, #000, #00000000 20%, #00000000 80%, #000);
+            z-index: 2;
         }
 
+        .swiper {
+            padding-left: 80px;
+
+            &:last-child {
+                padding-left: 0px;
+            }
+        }
+    }
+
+    &-line {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+
+        &:last-child {
+            justify-content: flex-end;
+            margin-bottom: 0;
+        }
+
+        li,
         .img {
             max-width: initial; //將最大寬度恢復成默認值（重置）
-            width: 160px;
+            min-width: 160px;
+            max-width: 160px;
             height: 40px;
         }
     }
@@ -347,10 +360,6 @@
         &-title {
             font-size: 20px;
             margin-bottom: 24px;
-        }
-
-        .enterprise-group {
-            gap: 12px;
         }
     }
 }
@@ -444,7 +453,7 @@
     color: #020202;
     border-radius: 160px;
 
-    .h2 {
+    &-title {
         margin-bottom: 80px;
         text-align: center;
     }
@@ -454,7 +463,7 @@
         padding: 80px 0;
         border-radius: 20px;
 
-        .h2 {
+        &-title {
             font-size: 32px;
             padding: 0 30px;
             margin-bottom: 32px;
@@ -567,13 +576,19 @@
         max-width: 100%;
         margin-bottom: 42px;
         flex-wrap: wrap;
-        gap: 0;
 
         ul {
             margin: 16px auto 0;
             order: 2;
-            overflow: hidden;
+            overflow-x: scroll;
         }
+
+        // &-list{
+        //     cursor: grab;
+        //     &:active {
+        //         cursor: grabbing;
+        //     }
+        // }
     }
 }
 
@@ -624,7 +639,7 @@
     &-subject {
         flex-grow: 1;
 
-        .h4 {
+        &-title {
             margin-bottom: 12px;
         }
 
@@ -674,33 +689,78 @@
     }
 }
 
+// .pagination {
+//     display: flex;
+//     justify-content: flex-end;
+//     gap: 4px;
+//     margin-right: 12px;
+
+//     &-item {
+//         max-width: 48px;
+//         padding: 12px 20px;
+//         display: flex;
+//         justify-content: center;
+//         text-align: center;
+//         color: #020202;
+//         cursor: pointer;
+        
+//         &:hover {
+//             background: #020202;
+//             color: #fff;
+//             border-radius: 16px;
+//         }
+//     }
+//     .active {
+//         background: #020202;
+//         color: #fff;
+//         border-radius: 16px;
+//     }
+
+//     /* LV2 設計稿
+//     .material-icons {
+//         padding: 12px;
+//     }
+// */
+//     @media (max-width:767px) {
+//         justify-content: center;
+//     }
+// }
 .pagination {
     display: flex;
     justify-content: flex-end;
     gap: 4px;
-
-    a {
+    margin-right: 12px;
+  
+    &-item-link {
+      max-width: 48px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: #020202;
+      cursor: pointer;
+  
+      &:hover {
+        background: #020202;
         color: #fff;
-        padding: 12px 20px;
+        border-radius: 16px;
+      }
     }
-
-    .active,
-    a:focus,
-    a:hover {
+    .disabled{
         background: #020202;
         color: #fff;
         border-radius: 16px;
     }
-
+  
     /* LV2 設計稿
-    .material-icons {
-        padding: 12px;
+      .material-icons {
+          padding: 12px;
+      }
+  */
+    @media (max-width: 767px) {
+      //justify-content: center;
     }
-*/
-    @media (max-width:767px) {
-        justify-content: center;
-    }
-}
+  }
 
 .start {
     text-align: center;
@@ -739,20 +799,30 @@
     padding: 80px 0;
     border-top: 1px solid #fff;
 
-    .direction {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+    .direction li {
+        margin-bottom: 8px;
 
-        a:hover {
-            background: #fff;
-            color: #020202;
-            border-radius: 5px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            font-size: 80px;
+
+            &:hover {
+                background: #fff;
+                color: #020202;
+                border-radius: 5px;
+            }
         }
     }
 
     @media (max-width:767px) {
         flex-direction: column-reverse;
+
+        a {
+            font-size: 48px;
+        }
 
         .logo {
             margin-bottom: 40px;
@@ -800,13 +870,11 @@
 
         .copyright,
         .link {
-            margin-top: 6px;
-            margin-bottom: 6px;
+            margin: 6px 0;
         }
 
         .link {
-            order: 2;
-            margin-right: 0;
+            order: 1;
         }
 
     }
