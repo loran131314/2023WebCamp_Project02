@@ -9,10 +9,12 @@
     // display: none;
     height: 4px;
     border-radius: 10px;
-    &-track{
+
+    &-track {
         background: #fff;
     }
-    &-thumb{
+
+    &-thumb {
         background: #f2f2f2;
     }
 }
@@ -63,17 +65,12 @@ h1 {
 h2,
 h3,
 h4,
-.application-title,
-.direction li,
-.service-title,
-.service-card-title,
-.enterprise-title {
+.font-design-heavy {
     font-weight: 900;
     line-height: 1.2;
 }
 
-h2,
-.h2 {
+h2 {
     font-size: 80px;
 
     @media (max-width:767px) {
@@ -82,14 +79,12 @@ h2,
 }
 
 h3,
-.service-title,
-.service-card-title,
-.enterprise-title {
+.fz-32 {
     font-size: 32px;
 }
 
 h4,
-.product-subject-title {
+.fz-20 {
     font-size: 20px;
 }
 

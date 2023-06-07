@@ -53,8 +53,8 @@ $(document).ready(function (event) {
   $('.navbar-icon-mobile').click(function () {
     $('.navbar-menu-icon-mobile').toggle();
     $('.navbar-close-icon-mobile').toggle();
-    $('.navbar-menu-mobile').slideToggle();
-    $('.banner, main').slideToggle();
+    $('.navbar-menu-mobile').toggle();
+    $('.banner, main').toggle(10);
   });
 
   $('.category-click').click(function () {
@@ -83,7 +83,7 @@ $(document).ready(function (event) {
 /* 原本要利用 swiper 實現自動滾動, codepen 測試沒問題, 但放入專案縮放視窗時圖片會重疊*/
 // 已解決 ↑↑↑ 將_home.scss Line348 設置最大最小寬度
 // https://codepen.io/laron9486/pen/PoyXaqV
-const swiper = new Swiper(".enterprise-swiper", {
+/*const enterpriseSwiper = new Swiper(".enterprise-swiper", {
   // on: {
   //   resize: function () {
   //     this.update();
@@ -99,6 +99,12 @@ const swiper = new Swiper(".enterprise-swiper", {
   // https://reurl.cc/o7eVbQ
   autoplay: {
     delay: 500,
+    pauseOnMouseEnter: true,
+    //disableOnInteraction: false,
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
   },
   breakpoints: {
     // 768: {
@@ -112,7 +118,7 @@ const swiper = new Swiper(".enterprise-swiper", {
       slidesPerGroup: 0
     },
   },
-});
+});*/
 
 /* --------------- 拖曳類型列表 --------------- 測試未果(放置)
 let areaDrag = document.querySelector('.category-menu');
@@ -220,7 +226,7 @@ function WorksRender() {
           <img class="img" src="${item.imageUrl}" alt="ai image">
         </div>
         <div class="product-subject">
-          <h4 class="product-subject-title">${item.title}</h4>
+          <h4 class="product-subject-title fz-20">${item.title}</h4>
           <p class="product-subject-describe">${item.description}</p>
         </div>
         <div class="product-belong">
@@ -270,13 +276,13 @@ function PagesRender() {
     }" >
       <a class="pagination-item-link ${
         pagesData.current_page == i ? "disabled" : ""
-      }" href="#"  data-page="${i}">${i}</a>
+      }" href="#search"  data-page="${i}">${i}</a>
     </li>`;
   }
 
   if (pagesData.has_next) {
     pageStr += /*html*/ `<li class="pagination-item">
-      <a class="pagination-item-link" href="#">
+      <a class="pagination-item-link" href="#search">
         <span class="material-icons">
           keyboard_arrow_right
         </span>
