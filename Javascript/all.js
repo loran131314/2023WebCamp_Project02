@@ -119,6 +119,11 @@ $(document).ready(function (event) {
     },
   },
 });*/
+const enterpriseSwiper = new Swiper(".enterprise-swiper", {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  freeMode: true,
+});
 
 /* --------------- 拖曳類型列表 --------------- 測試未果(放置)
 let areaDrag = document.querySelector('.category-menu');
@@ -130,7 +135,7 @@ areaDrag.addEventListener("wheel", function (event) {
 });
 */
 
-const commentSwipper = new Swiper('#comment-swiper', {
+const commentSwipper = new Swiper('.comment-swiper', {
 
   // 頁面呈現的物件數
   slidesPerView: 1,
@@ -174,6 +179,7 @@ const commentSwipper = new Swiper('#comment-swiper', {
       draggable: true,
     },*/
 });
+
 
 
 /* --------------- 利用穎旻老師的程式碼做修改 --------------- */

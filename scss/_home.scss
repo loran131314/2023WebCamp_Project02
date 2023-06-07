@@ -383,77 +383,92 @@
 //     }
 // }
 .enterprise {
-    overflow: hidden;
-
     &-title {
-        margin-bottom: 80px;
+      margin-bottom: 80px;
     }
-
+  
     &-group {
-        position: relative;
+      overflow-x: hidden;
+      position: relative;
 
-        .dark-gradient {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background-image: linear-gradient(to right,
-                    #000,
-                    #00000000 20%,
-                    #00000000 70%,
-                    #000);
-            z-index: 10;
-        }
-    }
-
-    &-line {
-        display: flex;
-        justify-content: flex-start;
-        margin-bottom: 20px;
-        gap: 20px;
-
+      // 原本只下一個偽元素導致無法全區塊滑動（覆蓋滑動區域）, 因此將陰影的偽元素分成兩區塊
+      &::before {
+        content: "";
+        position: absolute;
+        width: 15%;
+        height: 100px;
+        background-image: linear-gradient(
+          to right,
+          #000 25%,
+          #00000000,
+        );
+        z-index: 2;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 15%;
+        height: 100px;
+        background-image: linear-gradient(
+          to left,
+          #000 20%,
+          #00000000,
+        );
+        z-index: 2;
+      }
+  
+      .swiper {
         &:last-child {
-            padding-left: 80px;
-            margin-bottom: 0;
+          padding-left: 80px;
         }
-
-        li,
-        .img {
-            max-width: initial; //將最大寬度恢復成默認值（重置）
-            min-width: 160px;
-            height: 40px;
-        }
+      }
     }
-
-    @media (max-width: 1200px) {
-        .scroll {
-            overflow-x: scroll;
-
-            &::-webkit-scrollbar {
-                height: 4px;
-                border-radius: 10px;
-
-                &-track {
-                    background: #020202;
-                }
-
-                &-thumb {
-                    border-radius: 10px;
-                    background: #f2f2f233;
-                }
-            }
-        }
+  
+    &-swiper {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 20px !important;
+  
+      &:first-child {
+      margin-top: 0px !important;
+      }
+  
+      li,
+      .img {
+        max-width: initial; //將最大寬度恢復成默認值（重置）
+        min-width: 160px;
+        max-width: 160px;
+        height: 40px;
+      }
     }
-
+  
+    /*.swiper-scrollbar {
+          &-drag {
+              background: none;
+  
+              &:after {
+                  content: "";
+                  width: 40px;
+                  height: 4px;
+                  border-radius: 10px;
+                  background: #f2f2f233;
+                  position: absolute;
+                  bottom: 8px;
+                  //left: 50%;
+                  //margin: 0 0 0 -20px;
+              }
+          }
+      }*/
+  
     @media (max-width: 767px) {
-        &-title {
-            font-size: 20px;
-            margin-bottom: 24px;
-        }
+      &-title {
+        font-size: 20px;
+        margin-bottom: 24px;
+      }
     }
-}
+  }
 
 /* --------------- container > comment --------------- */
 .comment {
