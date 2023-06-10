@@ -60,6 +60,10 @@ $(document).ready(function (event) {
   $('.category-click').click(function () {
     $(this).find('.category-menu').slideToggle();
   });
+  $(".filter-btn").click(function () {
+    $(".active").removeClass("active");
+    $(this).addClass("active");
+  });
   $('.sort-new').click(function (event) {
     event.preventDefault();
     $('.sort-menu').slideDown();
@@ -303,44 +307,41 @@ function PagesRender() {
 // 排序切換
 const desc = document.querySelector("#desc");
 const asc = document.querySelector("#asc");
-const btnSort = document.querySelector("#btn-sort");
 //  由新到舊 -> sort = 0
-// desc.addEventListener("click", function (e) {
-//   e.preventDefault();
-//   data.sort = 0;
-//   getData(data);
-//   btnSort.innerHTML = '<span class="category-text">由新到舊</span><span class="material-icons">expand_more</span>';
-// });
+desc.addEventListener("click", function (e) {
+  e.preventDefault();
+  data.sort = 0;
+  getData(data);
+});
 //  由舊到新 -> sort = 1
-// asc.addEventListener("click", function (e) {
-//   e.preventDefault();
-//   data.sort = 1;
-//   getData(data);
-//   btnSort.innerHTML = '<span class="category-text">由舊到新</span><span class="material-icons">expand_more</span>';
-// });
+asc.addEventListener("click", function (e) {
+  e.preventDefault();
+  data.sort = 1;
+  getData(data);
+});
 
 // 類型切換
-// const filterBtns = document.querySelectorAll(".filter-btn li a");
-// filterBtns.forEach(function (item) {
-//   item.addEventListener("click", function (e) {
-//     e.preventDefault();
-//     if (item.textContent === "全部") {
-//       console.log(item.textContent);
-//       data.type = "";
-//     } else {
-//       console.log(item.textContent);
-//       data.type = item.textContent;
-//     }
-//     getData(data);
-//   });
-// });
+const filterBtns = document.querySelectorAll(".filter-btn");
+filterBtns.forEach(function (item) {
+  item.addEventListener("click", function () {
+    if (item.textContent === "全部") {
+      // console.log(item.textContent);
+      data.type = "";
+    } else {
+      // console.log(item.textContent);
+      data.type = item.textContent;
+    }
+    getData(data);
+  });
+});
 
 // 搜尋欄
-// const search = document.querySelector("#search");
-// search.addEventListener("keydown", function (e) {
-//   if (e.keyCode === 13) {
-//     data.search = search.value;
-//     data.page = 1;
-//     getData(data);
-//   }
-// });
+const search = document.querySelector("#search");
+search.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) {
+    data.search = search.value;
+    data.page = 1;
+    getData(data);
+    // search.value = "";  // 將 input 欄位清空
+  }
+});

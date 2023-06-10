@@ -136,162 +136,162 @@
             <section class="application" id="application">
                 <div class="container">
                     <h2 class="application-title font-design-heavy">這些超酷的應用，都來自 AI工具王</h2>
-                    <input type="text" class="search-bar" placeholder="輸入關鍵字搜尋">
+                    <input type="text" class="search-bar" placeholder="輸入關鍵字搜尋" id="search">
                     <div class="category">
                         <div class="category-filter category-click">
-                            <button type="button" class="category-btn">
-                                <span class="category-text">篩選</span>
-                                <span class="material-icons">filter_alt</span>
-                            </button>
-                            <ul class="category-menu filter-btn">
-                                <li><a>全部</a></li>
-                                <li><a>問答服務</a></li>
-                                <li><a>虛擬客服</a></li>
-                                <li><a>生活應用</a></li>
-                                <li><a>程式知識</a></li>
-                                <li><a>翻譯助手</a></li>
-                                <li><a>行銷文案</a></li>
-                            </ul>
+                          <button type="button" class="category-btn">
+                            <span class="category-text">篩選</span>
+                            <span class="material-icons">filter_alt</span>
+                          </button>
+                          <ul class="category-menu">
+                            <li><a class="filter-btn">全部</a></li>
+                            <li><a class="filter-btn">問答服務</a></li>
+                            <li><a class="filter-btn">虛擬客服</a></li>
+                            <li><a class="filter-btn">生活應用</a></li>
+                            <li><a class="filter-btn">程式知識</a></li>
+                            <li><a class="filter-btn">翻譯助手</a></li>
+                            <li><a class="filter-btn">行銷文案</a></li>
+                          </ul>
                         </div>
-                        <ul class="category-list  filter-btn">
-                            <li><a class="active">全部</a></li>
-                            <li><a>問答服務</a></li>
-                            <li><a>虛擬客服</a></li>
-                            <li><a>生活應用</a></li>
-                            <li><a>程式知識</a></li>
-                            <li><a>翻譯助手</a></li>
-                            <li><a>行銷文案</a></li>
+                        <ul class="category-list">
+                          <li><a class="filter-btn active">全部</a></li>
+                          <li><a class="filter-btn">問答服務</a></li>
+                          <li><a class="filter-btn">虛擬客服</a></li>
+                          <li><a class="filter-btn">生活應用</a></li>
+                          <li><a class="filter-btn">程式知識</a></li>
+                          <li><a class="filter-btn">翻譯助手</a></li>
+                          <li><a class="filter-btn">行銷文案</a></li>
                         </ul>
                         <div class="category-sort category-click">
-                            <button type="button" class="category-btn" id="btn-sort">
-                                <span class="category-text sort-text">由新到舊</span>
-                                <span class="material-icons">expand_more</span>
-                            </button>
-                            <ul class="category-menu sort-menu">
-                                <li class="sort-new mb-8" id="desc"><a>由新到舊</a></li>
-                                <li class="sort-old"><a id="asc">由舊到新</a></li>
-                            </ul>
+                          <button type="button" class="category-btn">
+                            <span class="category-text sort-text">由新到舊</span>
+                            <span class="material-icons">expand_more</span>
+                          </button>
+                          <ul class="category-menu sort-menu">
+                            <li class="sort-new mb-8" id="desc"><a>由新到舊</a></li>
+                            <li class="sort-old"><a id="asc">由舊到新</a></li>
+                          </ul>
                         </div>
-                    </div>
+                      </div>
                     <ul class="product">
                         <!--  LV2 設計稿
-                        <li class="product-card">
-                            <div class="product-card-pic"><img
-                                    src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool1.png?raw=true"
-                                    alt="Chatbot Builder" class="img"></div>
-                            <div class="product-subject">
-                                <p class="h4">Chatbot Builder</p>
-                                <p class="product-subject-describe">建立智能化的聊天機器人，解答常見問題、提供客戶支援、收集反饋等。</p>
-                            </div>
-                            <div class="product-belong">
-                                <span class="ai">AI 模型</span>
-                                <span class="name">卡卡</span>
-                            </div>
-                            <div class="product-function">
-                                <span class="tag">#聊天</span>
-                                <a href="#">
-                                    <span class="material-icons">share</span></a>
-                            </div>
-                        </li>
-                        <li class="product-card">
-                            <div class="product-card-pic"><img
-                                    src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool2.png?raw=true"
-                                    alt="Image Recognition Platform" class="img"></div>
-                            <div class="product-subject">
-                                <p class="h4">Image Recognition Platform</p>
-                                <p class="product-subject-describe">專業的圖像識別平台，識別圖像、分類、標記等。</p>
-                            </div>
-                            <div class="product-belong">
-                                <span class="ai">AI 模型</span>
-                                <span class="name">杰杰</span>
-                            </div>
-                            <div class="product-function">
-                                <span class="tag">#影像辨識</span>
-                                <a href="#">
-                                    <span class="material-icons">share</span></a>
-                            </div>
-                        </li>
-                        <li class="product-card">
-                            <div class="product-card-pic"><img
-                                    src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool3.png?raw=true"
-                                    alt="Language Translation API" class="img"></div>
-                            <div class="product-subject">
-                                <p class="h4">Language Translation API</p>
-                                <p class="product-subject-describe">專業的語言翻譯 API，實現文本翻譯功能，支援多種格式的文本。</p>
-                            </div>
-                            <div class="product-belong">
-                                <span class="ai">AI 模型</span>
-                                <span class="name">琪琪</span>
-                            </div>
-                            <div class="product-function">
-                                <span class="tag">#翻譯</span>
-                                <a href="#">
-                                    <span class="material-icons">share</span></a>
-                            </div>
-                        </li>
-                        <li class="product-card">
-                            <div class="product-card-pic"><img
-                                    src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool4.png?raw=true"
-                                    alt="Sentiment Analysis API" class="img"></div>
-                            <div class="product-subject">
-                                <p class="h4">Sentiment Analysis API</p>
-                                <p class="product-subject-describe">自動識別文本中的情感傾向，包括正向、負向和中性等。適用於情感分析、社交媒體監控、市場調查等。</p>
-                            </div>
-                            <div class="product-belong">
-                                <span class="ai">AI 模型</span>
-                                <span class="name">昊昊</span>
-                            </div>
-                            <div class="product-function">
-                                <span class="tag">#行銷</span>
-                                <a href="#">
-                                    <span class="material-icons">share</span></a>
-                            </div>
-                        </li>
-                        <li class="product-card">
-                            <div class="product-card-pic"><img
-                                    src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool5.png?raw=true"
-                                    alt="Fraud Detection Platform" class="img"></div>
-                            <div class="product-subject">
-                                <p class="h4">Fraud Detection Platform</p>
-                                <p class="product-subject-describe">預防詐騙活動，適用於銀行、金融、電商等。</p>
-                            </div>
-                            <div class="product-belong">
-                                <span class="ai">AI 模型</span>
-                                <span class="name">卡卡</span>
-                            </div>
-                            <div class="product-function">
-                                <span class="tag">#客服</span>
-                                <a href="#">
-                                    <span class="material-icons">share</span></a>
-                            </div>
-                        </li>
-                        <li class="product-card">
-                            <div class="product-card-pic"><img
-                                    src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool6.png?raw=true"
-                                    alt="Voice Assistant SDK" class="img"></div>
-                            <div class="product-subject">
-                                <p class="h4">Voice Assistant SDK</p>
-                                <p class="product-subject-describe">通過語音控制應用程式、設備，實現多種功能，例如播放音樂、查詢天氣、發送信息等。</p>
-                            </div>
-                            <div class="product-belong">
-                                <span class="ai">AI 模型</span>
-                                <span class="name">杰杰</span>
-                            </div>
-                            <div class="product-function">
-                                <span class="tag">#生產力</span>
-                                <a href="#">
-                                    <span class="material-icons">share</span></a>
-                            </div>
-                        </li> -->
+                <li class="product-card">
+                    <div class="product-card-pic"><img
+                            src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool1.png?raw=true"
+                            alt="Chatbot Builder" class="img"></div>
+                    <div class="product-subject">
+                        <p class="product-subject-title">Chatbot Builder</p>
+                        <p class="product-subject-describe">建立智能化的聊天機器人，解答常見問題、提供客戶支援、收集反饋等。</p>
+                    </div>
+                    <div class="product-belong">
+                        <span class="ai">AI 模型</span>
+                        <span class="name">卡卡</span>
+                    </div>
+                    <div class="product-function">
+                        <span class="tag">#聊天</span>
+                        <a href="#">
+                            <span class="material-icons">share</span></a>
+                    </div>
+                </li>
+                <li class="product-card">
+                    <div class="product-card-pic"><img
+                            src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool2.png?raw=true"
+                            alt="Image Recognition Platform" class="img"></div>
+                    <div class="product-subject">
+                        <p class="product-title">Image Recognition Platform</p>
+                        <p class="product-subject-subject-describe">專業的圖像識別平台，識別圖像、分類、標記等。</p>
+                    </div>
+                    <div class="product-belong">
+                        <span class="ai">AI 模型</span>
+                        <span class="name">杰杰</span>
+                    </div>
+                    <div class="product-function">
+                        <span class="tag">#影像辨識</span>
+                        <a href="#">
+                            <span class="material-icons">share</span></a>
+                    </div>
+                </li>
+                <li class="product-card">
+                    <div class="product-card-pic"><img
+                            src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool3.png?raw=true"
+                            alt="Language Translation API" class="img"></div>
+                    <div class="product-subject">
+                        <p class="product-title">Language Translation API</p>
+                        <p class="product-subject-subject-describe">專業的語言翻譯 API，實現文本翻譯功能，支援多種格式的文本。</p>
+                    </div>
+                    <div class="product-belong">
+                        <span class="ai">AI 模型</span>
+                        <span class="name">琪琪</span>
+                    </div>
+                    <div class="product-function">
+                        <span class="tag">#翻譯</span>
+                        <a href="#">
+                            <span class="material-icons">share</span></a>
+                    </div>
+                </li>
+                <li class="product-card">
+                    <div class="product-card-pic"><img
+                            src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool4.png?raw=true"
+                            alt="Sentiment Analysis API" class="img"></div>
+                    <div class="product-subject">
+                        <p class="product-subject-title">Sentiment Analysis API</p>
+                        <p class="product-subject-describe">自動識別文本中的情感傾向，包括正向、負向和中性等。適用於情感分析、社交媒體監控、市場調查等。</p>
+                    </div>
+                    <div class="product-belong">
+                        <span class="ai">AI 模型</span>
+                        <span class="name">昊昊</span>
+                    </div>
+                    <div class="product-function">
+                        <span class="tag">#行銷</span>
+                        <a href="#">
+                            <span class="material-icons">share</span></a>
+                    </div>
+                </li>
+                <li class="product-card">
+                    <div class="product-card-pic"><img
+                            src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool5.png?raw=true"
+                            alt="Fraud Detection Platform" class="img"></div>
+                    <div class="product-subject">
+                        <p class="product-subject-title">Fraud Detection Platform</p>
+                        <p class="product-subject-describe">預防詐騙活動，適用於銀行、金融、電商等。</p>
+                    </div>
+                    <div class="product-belong">
+                        <span class="ai">AI 模型</span>
+                        <span class="name">卡卡</span>
+                    </div>
+                    <div class="product-function">
+                        <span class="tag">#客服</span>
+                        <a href="#">
+                            <span class="material-icons">share</span></a>
+                    </div>
+                </li>
+                <li class="product-card">
+                    <div class="product-card-pic"><img
+                            src="https://github.com/hexschool/2022-web-layout-training/blob/main/2023web-camp/tool6.png?raw=true"
+                            alt="Voice Assistant SDK" class="img"></div>
+                    <div class="product-subject">
+                        <p class="product-subject-title">Voice Assistant SDK</p>
+                        <p class="product-subject-describe">通過語音控制應用程式、設備，實現多種功能，例如播放音樂、查詢天氣、發送信息等。</p>
+                    </div>
+                    <div class="product-belong">
+                        <span class="ai">AI 模型</span>
+                        <span class="name">杰杰</span>
+                    </div>
+                    <div class="product-function">
+                        <span class="tag">#生產力</span>
+                        <a href="#">
+                            <span class="material-icons">share</span></a>
+                    </div>
+                </li> -->
                     </ul>
                     <ul class="pagination">
                         <!-- LV2 設計稿
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#" class="material-icons">keyboard_arrow_right</a></li> -->
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#" class="material-icons">keyboard_arrow_right</a></li> -->
                     </ul>
                 </div>
             </section>
